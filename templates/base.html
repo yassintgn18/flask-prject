@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>flask porjt</title>
+        <link rel="stylesheet"
+          href="https://unpkg.com/purecss@2.0.6/build/pure-min.css"
+          integrity="sha384-Uu6IeWbM+gzNVXJcM9XV3SohHtmWE+3VGi496jvgX1jyvDTXfdK+rfZc8C1Aehk5"
+          crossorigin="anonymous"
+          origin="anonymous"
+    />
+        <style>
+            :root {
+                --primary-color: #edf2fc;
+                --secondary-color: #212121;
+
+                
+            }
+            .dark-theme {
+                --primary-color: #000106;
+                --secondary-color: #fff;
+            }
+            body{
+                background-color: var(--primary-color);
+                color: var(--secondary-color);
+            }
+            title{
+                text-align: center;
+            }
+            th {
+                color: var(--secondary-color);
+                font-size: 22px;
+            }
+            td {
+                font-size: 18PX;
+                margin-left: 5px;
+                
+            }
+            div {
+                border: 2PX solid rgb(97, 97, 97);
+            }
+            .date {
+                display: flex;
+                border: none;
+            }
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                border-spacing: 0;
+            }
+            th, td {
+                padding: 10px;
+            }
+            th {
+                border-right: 2px solid rgb(170, 170, 170);
+            }
+            td:not(:last-child),
+            th:not(:last-child) {
+                border-right: 5px solid rgb(193, 193, 193);
+            }
+            .nav {
+                display: flex;
+                margin-top: 20px;
+                font-family: 'aria-describedby';
+                list-style: none;
+                margin-left: 220PX;
+                text-decoration: underline;
+
+
+            }
+            .nav li {
+                padding: 0PX 30PX;
+                border: none;
+                color: var(--primary-color);
+                font-size: 18PX;
+                color: var(--secondary-color);
+                font-family: Arial;
+            }
+          
+            
+
+            .nav1 {
+                display: flex;
+              
+                margin-top: 40px;
+                font-family: 'aria-describedby';
+                list-style: none;
+            }
+            .nav1 li {
+                margin-right: 50px;
+                margin-left: 50PX;
+      
+                border: none;
+                color: var(--secondary-color);
+                font-size: 18PX;transition: 0.5s;
+                font-family: sans-serif;
+            }
+            
+            
+            .infos {
+                max-height:70PX;
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+                font-size: 30PX;
+            }
+            .row {
+                background-color: var(--primary-color);
+                color: var(--secondary-color);
+                padding:  50PX 100PX; 
+                border-radius: 10px;
+                border-color: red;
+                margin: 0 50px;
+            }
+            body {
+                color: var(--secondary-color);
+                background-image: url('ninja.webp'); /* Background image */
+                background-size: cover; /* Image covers the entire background */
+                background-position: center; /* Image is centered */
+                background-repeat: no-repeat;            }
+            .bo {
+                width: 80px;
+                height: 30px;
+                font-size: 15px;
+                margin-top: 20px;
+                margin-right: 10px;
+                font-weight: bold;
+            }
+            .ma {
+                width: 80px;
+                height: 30px;
+                font-size: 15px;
+                margin-top: 20px;
+                margin-right: 10px;
+                font-weight: bold;
+            }
+            .bo:hover {
+                color: var(--secondary-color);
+                color: rgb(45, 216, 42);
+            }
+            .ma:hover {
+                color: var(--secondary-color);
+                color: rgb(250, 61, 61);
+            }
+            .bo {
+                margin-left: 25px;
+                border: 3px solid rgb(35, 208, 35);
+                border-radius: 5px;
+            }
+            .ma {
+                border: 3px solid rgb(211, 44, 44);
+                border-radius: 5px;
+            }
+            .jour {
+                padding: 0%;
+                position: absolute;
+                top: 90px;
+                left: 70px;
+                font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;                color: rgb(255, 85, 0);
+            }
+            .bm {
+                padding: 0px 30px;
+            }
+            #right {
+                width: 74px;
+                height: 22px;
+                font-size: 15px;
+                margin-top: 20px;
+                margin-right: 10px;
+                font-weight: bold;
+                border: 3px solid rgb(211, 44, 44);
+                border-radius: 5px;
+                padding-top: 6px;
+                padding-left: 16px;
+                transition: 0.25s;
+
+            }
+            #left {
+                width: 74px;
+                height: 22px;
+                font-size: 15px;
+                margin-top: 20px;
+                margin-right: 10px;
+                font-weight: bold;
+                margin-left: 25px;
+                border: 3px solid rgb(35, 208, 35);
+                border-radius: 5px;
+                padding-top: 6px;
+                padding-left: 16px;
+                transition: 0.25s;
+            }
+            
+            #left:hover{
+                background-color: rgb(160, 160, 160);
+                color: rgb(50, 74, 57);
+                border: 3px solid rgb(13, 255, 13);
+
+                
+            }
+            #right:hover{
+                background-color: rgb(160, 160, 160);
+                color: rgb(80, 44, 44);
+                border: 3px solid rgb(255, 0, 30);
+
+                
+            }
+            #icon {
+                cursor: pointer;
+                position: absolute;
+                top: 30px;
+                right: 40px;
+            }
+
+            
+
+            
+        </style>
+        
+        
+    </head>
+    <body>
+        <header>
+            <h1 style="color: rgb(14, 45, 78);text-shadow: 2PX 2PX 2PX whitesmoke;text-align: center;"></h1>
+            <!-- Add whatever header content you want -->
+        </header>
+        
+        <main>
+            {% block content %}
+            {% endblock %}
+        </main>
+
+        <footer>
+            <p></p>
+            <!-- Add whatever footer content you want -->
+        </footer>
+    </body>
+</html>

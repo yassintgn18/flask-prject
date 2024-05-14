@@ -1,0 +1,114 @@
+{% extends "base.html" %}
+
+{% block title %}Météo Essaouira{% endblock %}
+
+{% block content %}
+  <main>
+          
+    <!--<img src="/static/weather.avif" alt="walo"-->
+    
+    <h1 style="color: rgb(43, 159, 231);margin-left: 20PX;">                              Welcome to Météo Essaouira</h1>
+	<img src=" {{ url_for('static',filename = dark)  }}"  alt="dark " width="30px" height="30px" id="icon">
+
+
+
+    <!--<div  class="date">
+      <h3 style="color: rgb(255, 255, 255);text-shadow: 5px 5px 5px rgb(138, 31, 34);margin-left: 20PX;font-size: 30PX;">{{jour}} =></h3>
+      <h3 style="color: rgb(255, 255, 255);text-shadow: 5px 5px 5px rgb(117, 15, 15);margin-left: 20PX;font-size: 30PX;">{{dateLyouma}}</h3></div>
+	-->
+    <div class="row "  >
+
+		<h1 class="jour">{{jour}}</h1>
+		
+
+		<ul class="nav">
+			<li id="tempsG">temps</li>
+			<li id="temperatureG">temperature</li>
+			<li id="wind_speedG">wind_speed</li>
+			<li id="precipitationG">precipitation</li>
+			<li id="cloud_coverG">cloud_cover</li>
+		</ul>
+
+		{% for i in range(8) %}
+
+			<div class="infos">
+			
+				<ul class="nav1">
+					
+					
+					{% if current_hour >=  hoursforbonne[i] %}
+						
+							
+					
+						<form action="home/bonne" method="post">
+
+							<input type="hidden" name="temperature" value="{{ infos[i]['temperature'] }}">
+                    		<input type="hidden" name="cloud_cover" value="{{ infos[i]['cloud_cover'] }}">
+                    		<input type="hidden" name="precipitation" value="{{ infos[i]['precipitation'] }}">
+                    		<input type="hidden" name="wind_speed" value="{{ infos[i]['wind_speed_80m'] }}">
+
+							<input type="submit" class="bo" value="bonne">
+						</form>
+
+						
+						<form action="home/mauvaise" method="post">
+
+							<input type="hidden" name="temperature" value="{{ infos[i]['temperature'] }}">
+							<input type="hidden" name="cloud_cover" value="{{ infos[i]['cloud_cover'] }}">
+							<input type="hidden" name="precipitation" value="{{ infos[i]['precipitation'] }}">
+							<input type="hidden" name="wind_speed" value="{{ infos[i]['wind_speed_80m'] }}">	
+													
+							<input type="submit" value="mauvaise" class="ma" >
+						</form>
+					{% else %}
+						<h3 class="pred" id="left">P: {{predicton_list[i][1]}}</h3>
+						<h3 class="pred" id="right">P: {{predicton_list[i][2]}}</h3>
+					{% endif %}
+
+					<li class="temps"><H4>{{infos[i]['temps'] }}</H4></li>
+
+					<li class="temperature"><h5><img src=" {{ url_for('static',filename =infos[i]['image'])  }}"  alt="faux " width="30px" height="30px"> {{infos[i]['temperature']}}° </h5></li>
+
+					<li class="wind_speed"><p>{{infos[i]['wind_speed_80m']}} km/h</p></li>
+
+					<li class="precipitation">
+						<h5>{% if infos[i]['precipitation'] !=0.0 %}
+								<img src="static/images/umbrella.png" alt="faux " width="15%">
+							{% endif %}
+							{{infos[i]['precipitation']}}%
+						</h5>
+					</li>
+
+					<li class="cloud_cover"><h5>{{infos[i]['cloud_cover']}}%</h5></li>
+
+
+					
+				</ul>
+			</div>
+		{% endfor %} 
+
+
+		<script>
+			var icon = document.getElementById("icon")
+			icon.onclick = function(){
+				document.body.classList.toggle("dark-theme")
+				if(document.body.classList.contains("dark(theme)")){
+					icon.src = " {{ url_for('static',filename = dark)}}"
+				}else {
+					icon.src = " {{ url_for('static',filename = light)  }}"
+				}
+
+				if( !(document.body.classList.contains("dark(theme)"))){
+					icon.src = " {{ url_for('static',filename = light)}}"
+				}else {
+					icon.src = " {{ url_for('static',filename = dark)  }}"
+				}
+				
+		
+			}
+		</script>
+		
+    </div>
+</main>
+
+{% endblock content %}
